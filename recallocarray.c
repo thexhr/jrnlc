@@ -23,6 +23,7 @@
 
 #ifndef recallocarray
 
+#include "sodium.h"
 #include "jrnlc.h"
 
 /*
@@ -77,7 +78,7 @@ recallocarray(void *ptr, size_t oldnmemb, size_t newnmemb, size_t size)
 	} else
 		memcpy(newptr, ptr, newsize);
 
-	explicit_bzero(ptr, oldsize);
+	sodium_memzero(ptr, oldsize);
 	free(ptr);
 
 	return newptr;
