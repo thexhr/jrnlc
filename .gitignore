@@ -1,0 +1,5 @@
+*.o
+*.temp
+jrnlc
+cscope.*
+tags
