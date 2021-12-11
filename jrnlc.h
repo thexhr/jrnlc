@@ -102,6 +102,6 @@ void *recallocarray(void *, size_t, size_t, size_t);
 #endif
 
 /* readpassphrase.c */
-#if !defined(__OpenBSD__) || !defined(__FreeBSD__)
+#if !defined(__OpenBSD__) || !defined(__FreeBSD__) || !defined(__DragonFly__)
 char *read_passphrase(const char *, char *, size_t, int);
 #endif

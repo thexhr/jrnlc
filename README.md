@@ -67,6 +67,7 @@ Install the dependencies as follows:
 | --- | --- |
 | Arch Linux | `pacman -Syu gcc make json-c libsodium` |
 | Debian Linux| `apt install libsodium-dev libjson-c-dev` |
+| DragonFly BSD | `pkg install libsodium json-c` |
 | Fedora Linux | `dnf install libsodium-devel json-c-devel` |
 | FreeBSD | `pkg install libsodium json-c` |
 | NetBSD | `pkgin install pkg-config libsodium json-c` |

@@ -20,7 +20,7 @@
 #include <unistd.h>
 #include <termios.h>
 
-#if defined(__OpenBSD__) || defined(__FreeBSD__)
+#if defined(__OpenBSD__) || defined(__FreeBSD__) || defined(__DragonFly__)
 #include <readpassphrase.h>
 #else
 
@@ -181,7 +181,7 @@ get_initial_passphrase(char *passbuf)
 void
 read_password(const char *msg, char *passbuf)
 {
-#if defined(__OpenBSD__) || defined(__FreeBSD__)
+#if defined(__OpenBSD__) || defined(__FreeBSD__) || defined(__DragonFly__)
 	if (readpassphrase(msg, passbuf, sizeof(passbuf),
 		RPP_REQUIRE_TTY) == NULL) {
 			log_fatal(1, "Unable to read password\n");
