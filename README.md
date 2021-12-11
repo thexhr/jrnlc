@@ -17,13 +17,11 @@ Show the last two journal entries:
 
 ```
 $ jrnlc -n 2
-[2021-12-11 15:09] Vel ut dolorem earum ratione. Et veniam veniam alias ducimus vel ullam similique.
+[2021-12-11 15:09] Vel ut dolorem earum ratione.
 
-Id dolorem ducimus quis consectetur corrupti vitae. Modi corrupti incidunt repellat magni et nihil. Ea similique qui commodi possimus est.
-
-Cupiditate vitae officia ex reiciendis velit quibusdam. Tenetur omnis quam porro provident eaque unde. Omnis quas aperiam dolores ratione praesentium enim. Reprehenderit nesciunt ea voluptate aut dolorum dolor architecto. A numquam commodi aut. Distinctio laborum voluptas ullam iure est rerum recusandae maiores.
-
-Doloremque corrupti reiciendis architecto dignissimos consequatur aut occaecati aut. Dolor porro quibusdam quo. Ea sed repellendus deserunt porro qui. Quia nihil et maiores nulla eos animi. Minus assumenda maxime et distinctio.
+Id dolorem ducimus quis consectetur corrupti vitae.
+Modi corrupti incidunt repellat magni et nihil.
+Ea similique qui commodi possimus est.
 
 
 [2021-12-11 15:32] test  title line
@@ -33,13 +31,11 @@ and here's the content
 Create a new journal entry from a file.  This way you can create your entry in your text editor of choice and simply import it into jrnlc.
 ```
 $ cat sample_entry.txt
-Vel ut dolorem earum ratione. Et veniam veniam alias ducimus vel ullam similique.
+Vel ut dolorem earum ratione.
 
-Id dolorem ducimus quis consectetur corrupti vitae. Modi corrupti incidunt repellat magni et nihil. Ea similique qui commodi possimus est.
-
-Cupiditate vitae officia ex reiciendis velit quibusdam. Tenetur omnis quam porro provident eaque unde. Omnis quas aperiam dolores ratione praesentium enim. Reprehenderit nesciunt ea voluptate aut dolorum dolor architecto. A numquam commodi aut. Distinctio laborum voluptas ullam iure est rerum recusandae maiores.
-
-Doloremque corrupti reiciendis architecto dignissimos consequatur aut occaecati aut. Dolor porro quibusdam quo. Ea sed repellendus deserunt porro qui. Quia nihil et maiores nulla eos animi. Minus assumenda maxime et distinctio.
+Id dolorem ducimus quis consectetur corrupti vitae.
+Modi corrupti incidunt repellat magni et nihil.
+Ea similique qui commodi possimus est.
 
 $ jrnlc < sample_entry.txt
 [One title line, one blank line, then the body. End with ^D on a blank line]
