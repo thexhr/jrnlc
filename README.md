@@ -75,6 +75,8 @@ Install the dependencies as follows:
 | Ubuntu Linux| `apt install libsodium-dev libjson-c-dev` |
 | Void Linux| `xbps-install gcc make libsodium-devel json-c-devel` |
 
+If your operating system does not have `pkg-config` installed by default, you have to install it as well.
+
 ### Compilation and Installation
 
 By default, the `Makefile` uses `pkg-config` to look for external includes and libraries.  If your distribution uses special path, you have to modify the Makefile accordingly.
