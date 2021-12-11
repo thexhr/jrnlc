@@ -100,7 +100,7 @@ jrnlc encrypts your journal using _libsodium_ and the [XSalsa20](https://en.wiki
 
 ## FAQ
 
-**There is already [jrnl](https://jrnl.sh), why should I use jrnlc?** I myself used jrnl for the last years and it's a great piece of software.  I just grew tiered of fiddling around with Python and dependency upgrades over time, so I wrote jrnlc.  Further, jrnl has a lot of features I don't need.
+**There is already [jrnl](https://jrnl.sh), why should I use jrnlc?** I myself used jrnl for the last years and it's a great piece of software.  I just grew tired of fiddling around with Python and dependency upgrades over time, so I wrote jrnlc.  Further, jrnl has a lot of features I don't need.
 
 **OK, how can I switch from jrnl to jrnlc?** Just export your journal with `jrnl --format json` and copy it to the location of your `journal.json`. jrnlc will automatically import the file on the next start.
 
@@ -108,4 +108,4 @@ jrnlc encrypts your journal using _libsodium_ and the [XSalsa20](https://en.wiki
 
 ## License
 
-jrnl is written by Matthias Schmidt and is licensed under the ISC license.  I included some code from OpenBSD, the license and authors can be seen in the source code files.
+jrnl is written by Matthias Schmidt and is licensed under the ISC license.  It includes some code from OpenBSD, the license and authors can be seen in the source code files.
