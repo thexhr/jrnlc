@@ -1,0 +1,144 @@
+.\"
+.\" Copyright (c) 2021 Matthias Schmidt
+.\"
+.\" Permission to use, copy, modify, and distribute this software for any
+.\" purpose with or without fee is hereby granted, provided that the above
+.\" copyright notice and this permission notice appear in all copies.
+.\"
+.\" THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+.\" WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+.\" MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+.\" ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+.\" WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+.\" ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+.\" OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+.\"
+.\"
+.Dd December 18, 2021
+.Dt JRNLC 1
+.Sh NAME
+.Nm jrnlc
+.Nd Command line journaling tool
+.Sh SYNOPSIS
+.Nm jrnlc
+.Op Fl adeV
+.Op Fl B Ar file
+.Op Fl D Ar number
+.Op Fl I Ar number
+.Op Fl I Ar number
+.Sh DESCRIPTION
+.Nm
+is an opinionated command line journaling tool.
+You can take notes by entering them directly on the command line or by feeding
+a text file via standard input to
+.Nm .
+If wanted, you can encrypt your journal so that your notes remain secret.
+.Pp
+The options are as follows:
+.Bl -tag -width numbernumb
+.It Fl a
+Show all journal entries.
+.It Fl B Ar file
+Save an unecrypted backup of the journal.
+You can combine this option with other ones.
+.It Fl d
+Decrypt an encrypted journal.
+.It Fl D Ar number
+Delete the journal entry with the given
+.Ev number .
+.It Fl e
+Encrypt an unecrypted journal.
+.It Fl I Ar number
+Show only the entry with the given
+.Ev number .
+.It Fl n Ar n
+Show only the last
+.Ev n
+entries.
+.It Fl V
+Show the version number.
+.El
+.Pp
+See the example section below on how to use
+.Nm .
+.Sh ENVIRONMENT
+.Nm
+makes use of the following environment variables.
+.Bl -tag -width XDG_CONFIG_HOME
+.It Ev HOME
+If the
+.Ev XDG_CONFIG_HOME
+variable is not set,
+.Nm
+stores the journal and other data in the
+.Pa .jrnlc
+subdirectory in the user's home directory.
+.It Ev XDG_CONFIG_HOME
+In case this variable is set,
+.Nm
+stores the journal and other data in the
+.Pa jrnlc
+subdirectory under the path set by this environment variable.
+.El
+.Sh EXIT STATUS
+.Nm
+normally exists with 0 or with 1 if an error occurred.
+.Sh EXAMPLES
+The following examples show how to use
+.Nm .
+.Pp
+Create a new journal entry on the command line.
+Provide one title line, followed by a blank line and end with Ctrl+d on a
+blank line.
+.Bd -literal -offset indent
+$ jrnlc
+[One title line, one blank line, then the body. End with ^D on a blank line]
+Test title line
+
+And here's the content
+.Ed
+.Pp
+The next command shows the last two journal entries:
+.Bd -literal -offset indent
+$ jrnlc -n 2
+[2021-12-11 15:09] Vel ut dolorem earum ratione.
+
+Id dolorem ducimus quis consectetur corrupti vitae.
+Modi corrupti incidunt repellat magni et nihil.
+Ea similique qui commodi possimus est.
+
+
+[2021-12-11 15:32] test  title line
+
+and here's the content
+.Ed
+.Pp
+Create a new journal entry from a file.
+This way you can create your entry in your text editor of choice and simply
+import it into jrnlc.
+.Bd -literal -offset indent
+$ cat sample_entry.txt
+Vel ut dolorem earum ratione.
+
+Id dolorem ducimus quis consectetur corrupti vitae.
+Modi corrupti incidunt repellat magni et nihil.
+Ea similique qui commodi possimus est.
+
+$ jrnlc < sample_entry.txt
+[One title line, one blank line, then the body. End with ^D on a blank line]
+$
+.Ed
+.Pp
+Encrypt the journal using a password.
+Choose a good and strong password and remember it well (or use a password
+manager).
+.Bd -literal -offset indent
+$ jrnlc -e
+Encrypting journal...
+Enter Password:
+Enter Password again:
+.Ed
+.Sh AUTHORS
+.Nm
+was written by
+.An Matthias Schmidt Aq Mt xhr@giessen.ccc.de .
