@@ -14,7 +14,7 @@
 .\" OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 .\"
 .\"
-.Dd December 18, 2021
+.Dd December 20, 2021
 .Dt JRNLC 1
 .Sh NAME
 .Nm jrnlc
@@ -45,21 +45,24 @@ You can combine this option with other ones.
 Decrypt an encrypted journal.
 .It Fl D Ar number
 Delete the journal entry with the given
-.Ev number .
+.Ar number .
 .It Fl e
 Encrypt an unecrypted journal.
 .It Fl I Ar number
 Show only the entry with the given
-.Ev number .
+.Ar number .
 .It Fl n Ar n
 Show only the last
-.Ev n
+.Ar n
 entries.
 .It Fl V
 Show the version number.
 .El
 .Pp
-See the example section below on how to use
+If not arguments are provided
+.Nm
+provides the user with an input prompt to enter a journal entry.
+See the examples section below on how to use
 .Nm .
 .Sh ENVIRONMENT
 .Nm
