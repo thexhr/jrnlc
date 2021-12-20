@@ -63,4 +63,3 @@ write_config(void)
 	json_object_put(root);
 }
 
-
