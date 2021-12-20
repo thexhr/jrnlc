@@ -14,6 +14,7 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+#include <assert.h>
 #include <stdio.h>
 #include <string.h>
 #include <signal.h>
@@ -56,6 +57,7 @@ load_pass_file(const char *pass)
 	}
 
 	len = json_object_get_string_len(cval);
+	assert(len > 0);
 
 	/* decrypt_msg allocates as much memory as is needed for the original
 	 * hex string, so much more than needed for the decoded key */
@@ -92,6 +94,7 @@ load_nonce(unsigned char *nonce_buf)
 	}
 
 	len = json_object_get_string_len(nval);
+	assert(len > 0);
 
 	if (sodium_hex2bin(
 		(unsigned char * const)nonce_buf,
