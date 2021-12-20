@@ -16,6 +16,7 @@
 
 #include <sys/queue.h>
 
+#include <assert.h>
 #include <limits.h>
 #include <stdio.h>
 #include <string.h>
@@ -143,8 +144,7 @@ create_new_journal_entry()
 	snprintf(e->title, i+1, "%s", input_buf);
 
 	/* Should never happen, but better be safe than sorry */
-	if (input_len - i < 0)
-		log_fatal(1, "Something with your input is messed up\n");
+	assert(input_len - i > 0);
 
 	e->body = calloc_wrapper(1, input_len - i);
 
@@ -193,6 +193,7 @@ load_journal_from_disk()
 	temp_n = json_object_array_length(journal_entries);
 	for (i=0; i < temp_n; i++) {
 		json_object *temp = json_object_array_get_idx(journal_entries, i);
+		assert(temp != NULL);
 
 		e = malloc_wrapper(sizeof(struct journal_entry));
 
@@ -322,6 +323,7 @@ save_journal_to_disk(const char *path, int always_plain)
 	/* Create JSON array containing all entries */
 	LIST_FOREACH(e, &head, entries) {
 		json_object *cobj = json_object_new_object();
+		assert(cobj != NULL);
 
 		/*
 		 * Store length of plain text entries.  Needed for proper decryption later on.
