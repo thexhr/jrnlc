@@ -94,7 +94,7 @@ create_new_journal_entry()
 {
 	struct journal_entry *e;
 	char buf[MAX_LINE];
-	char *input_buf = NULL, *ptr;
+	char *input_buf, *ptr;
 	int i = 1, input_len = 0;
 
 	printf("[One title line, one blank line, then the body. End with ^D on a blank line]\n");
