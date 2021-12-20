@@ -124,10 +124,9 @@ write_pass_file(unsigned char *key, const char *pass)
 	size_t hex_len;
 
 	root = json_object_new_object();
-	if (!root) {
-		printf("Cannot create JSON object\n");
-		exit(1);
-	}
+	if (!root)
+		log_fatal(1, "Cannot create JSON object\n");
+
 	c = encrypt_msg((const char *)key, strlen((const char *)key),
 		(const unsigned char *)	pass);
 	if (c == NULL) {
