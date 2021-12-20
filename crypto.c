@@ -77,7 +77,7 @@ decrypt_msg(const char *hex, unsigned long long hex_len, size_t d_len,
  * Allocated memory must be freed by the caller.
  */
 char *
-encrypt_msg(const char *m, unsigned long long m_len, 
+encrypt_msg(const char *m, unsigned long long m_len,
 	const unsigned char *k)
 {
 	unsigned char *c;
