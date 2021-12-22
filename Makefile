@@ -10,7 +10,7 @@ CFLAGS += -Wshadow -Wpointer-arith -Wcast-qual -Wsign-compare -Wswitch-enum
 CFLAGS += -Wunused-parameter -Wuninitialized -Wformat-security -Wformat-overflow=2
 CFLAGS += -Wno-padded
 CFLAGS += `pkg-config --cflags libsodium json-c`
-LDADD   = `pkg-config --libs libsodium json-c` -lsodium -ljson-c
+LDADD   = `pkg-config --libs libsodium json-c`
 
 BIN   = jrnlc
 OBJS  = jrnlc.o json.o util.o recallocarray.o config.o crypto.o key.o
