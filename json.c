@@ -392,8 +392,12 @@ again:
 		json_object_array_add(entries, cobj);
 	}
 
-	if (json_object_to_file(path, root) == -1) {
-		printf("Error saving %s: %s\n", path, json_util_get_last_err());
+	if (always_plain) {
+		fprintf(stderr, "%s", json_object_to_json_string(root));
+	} else {
+		if (json_object_to_file(path, root) == -1) {
+			printf("Error saving %s: %s\n", path, json_util_get_last_err());
+		}
 	}
 
 	json_object_put(root);

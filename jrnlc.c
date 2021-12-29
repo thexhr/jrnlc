@@ -34,14 +34,13 @@ static int debug    = 0;
 static int backup 	= 0;
 static struct config conf;
 static char jrnlc_config[_POSIX_PATH_MAX];
-static char backup_path[_POSIX_PATH_MAX];
 static unsigned char nonce[crypto_secretbox_NONCEBYTES];
 extern char *__progname;
 
 static void
 usage(void)
 {
-	log_fatal(1, "%s [-ade] [-DIn number] [-B file]\n", __progname);
+	log_fatal(1, "%s [-aBde] [-DIn number]\n", __progname);
 }
 
 int
@@ -53,21 +52,16 @@ main(int argc, char **argv)
 	int last 		= 0;
 	int entry 		= 0;
 	int to_delete 	= 0;
-	int ch, ret;
+	int ch;
 
 	conf.jrnlc_journal[0] = '\0';
-	backup_path[0] = '\0';
 
-	while ((ch = getopt(argc, argv, "aB:dD:ef:I:n:vV")) != -1) {
+	while ((ch = getopt(argc, argv, "aBdD:ef:I:n:vV")) != -1) {
 		switch (ch) {
 		case 'a':
 			last = -1;
 			break;
 		case 'B':
-			ret = snprintf(backup_path, _POSIX_PATH_MAX, "%s", optarg);
-			if (ret < 0 || (size_t)ret >= sizeof(backup_path)) {
-				log_fatal(1, "Path truncation happened.  Buffer to short to fit %s\n", optarg);
-			}
 			backup = 1;
 			break;
 		case 'd':
@@ -215,7 +209,7 @@ shutdown(int prio)
 {
 	/* User requested a plain text backup with -B */
 	if (backup)
-		save_journal_to_disk(backup_path, 1);
+		save_journal_to_disk(NULL, 1);
 
 	save_journal_to_disk(get_jrnlc_journal(), 0);
 	write_config();
