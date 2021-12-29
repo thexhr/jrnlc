@@ -408,7 +408,7 @@ validate_string(json_object *jobj, const char *desc, const char *def)
 	int len;
 
 	if (jobj == NULL) {
-		log_debug(1, "Empty JSON object for %s.  Using default\n");
+		log_debug(1, "Empty JSON object for %s.  Using default\n", desc);
 		return strndup(def, strlen(def));
 	}
 
@@ -440,7 +440,7 @@ validate_body(json_object *jobj)
 	int len;
 
 	if (jobj == NULL) {
-		log_debug(1, "Empty JSON object for %s\n");
+		log_debug(1, "Empty JSON object\n");
 		return NULL;
 	}
 
@@ -470,7 +470,7 @@ validate_int(json_object *jobj, const char *desc, int min, int max, int def)
 	int value;
 
 	if (jobj == NULL) {
-		log_debug(1, "Empty JSON object for %s.  Using default\n");
+		log_debug(1, "Empty JSON object for %s.  Using default\n", desc);
 		return def;
 	}
 
