@@ -28,7 +28,7 @@
 #define MAX_LINE 80
 #define MAX_PASS_LEN 255
 
-#define VERSION "2021.a"
+#define VERSION "2021.b"
 
 struct journal_entry {
 	LIST_ENTRY(journal_entry) entries;
