@@ -4,6 +4,8 @@ jrnlc is a opinionated command line application to take notes likes a journal si
 
 ## Usage
 
+A more detailed description of jrnlc and its usage patters are shown in the [man page](https://xosc.org/jrnlc.html).
+
 Create a new journal entry on the command line.  End it with Ctrl+d on a blank line.
 ```
 $ jrnlc
