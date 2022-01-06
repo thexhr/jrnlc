@@ -200,7 +200,7 @@ load_journal_from_disk()
 		e->title_len = validate_int(temp, "title_len", 0, MAX_TITLE, 0);
 		e->body_len  = validate_int(temp, "body_len", 0, -1, 0);
 
-		e->number = validate_int(temp, "number", 0, 1, i);
+		e->number = validate_int(temp, "number", 0, 1, i+1);
 
 		if (is_encrypted()) {
 			e->time = validate_string(temp, "time", "HH:MM");
