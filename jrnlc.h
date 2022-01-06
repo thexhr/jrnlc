@@ -32,6 +32,7 @@
 
 struct journal_entry {
 	LIST_ENTRY(journal_entry) entries;
+	int number;
 	char *date;
 	char *time;
 	char *title;
@@ -60,7 +61,7 @@ void log_fatal(int, const char *, ...);
 int is_encrypted(void);
 
 /* json.c */
-void print_journal_entry(const struct journal_entry *, int);
+void print_journal_entry(const struct journal_entry *);
 void create_new_journal_entry(void);
 void load_journal_from_disk(void);
 void save_journal_to_disk(const char *, int);

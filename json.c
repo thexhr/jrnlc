@@ -31,16 +31,17 @@ static struct journal_entry *last_entry = NULL;
 static int list_total = 0;
 
 void
-print_journal_entry(const struct journal_entry *e, int i)
+print_journal_entry(const struct journal_entry *e)
 {
-	printf("[%d] [%s %s] %s\n\n%s\n\n", i, e->date, e->time, e->title, e->body);
+	printf("[%d] [%s %s] %s\n\n%s\n\n", e->number, e->date, e->time,
+		e->title, e->body);
 }
 
 void
 print_journal_entries(int last)
 {
 	struct journal_entry *e;
-	int when, i = 0;
+	int when;
 
 	/* Show all entries */
 	if (last == -1)
@@ -53,9 +54,9 @@ print_journal_entries(int last)
 		when = 0;
 
 	LIST_FOREACH(e, &head, entries) {
-		if (i++ < when)
+		if (e->number < when)
 			continue;
-		print_journal_entry(e, i);
+		print_journal_entry(e);
 	}
 }
 
@@ -63,12 +64,10 @@ void
 print_single_journal_entry(int id)
 {
 	struct journal_entry *e;
-	int i = 1;
 
 	LIST_FOREACH(e, &head, entries) {
-		if (i == id)
-			print_journal_entry(e, i);
-		i++;
+		if (e->number == id)
+			print_journal_entry(e);
 	}
 }
 
@@ -76,14 +75,12 @@ int
 delete_entry(int id)
 {
 	struct journal_entry *e;
-	int i = 1;
 
 	LIST_FOREACH(e, &head, entries) {
-		if (i == id) {
+		if (e->number == id) {
 			LIST_REMOVE(e, entries);
 			return 1;
 		}
-		i++;
 	}
 
 	return 0;
@@ -162,6 +159,8 @@ create_new_journal_entry()
 	e->date = calloc_wrapper(1, MAX_DATE);
 	create_date(e->date, MAX_DATE);
 
+	e->number = list_total + 1;
+
 	if (last_entry != NULL)
 		LIST_INSERT_AFTER(last_entry, e, entries);
 	else
@@ -200,6 +199,8 @@ load_journal_from_disk()
 		/* Length of the plain text title and body */
 		e->title_len = validate_int(temp, "title_len", 0, MAX_TITLE, 0);
 		e->body_len  = validate_int(temp, "body_len", 0, -1, 0);
+
+		e->number = validate_int(temp, "number", 0, 1, i);
 
 		if (is_encrypted()) {
 			e->time = validate_string(temp, "time", "HH:MM");
@@ -336,6 +337,7 @@ save_journal_to_disk(const char *path, int always_plain)
 		e->body_len  = strlen(e->body);
 		json_object_object_add(cobj, "title_len", json_object_new_int(e->title_len));
 		json_object_object_add(cobj, "body_len", json_object_new_int(e->body_len));
+		json_object_object_add(cobj, "number", json_object_new_int(e->number));
 
 
 		/* The user requested a plain text backup with -B */
