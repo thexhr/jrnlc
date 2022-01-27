@@ -54,7 +54,7 @@ print_journal_entries(int last)
 		when = 0;
 
 	LIST_FOREACH(e, &head, entries) {
-		if (e->number < when)
+		if (e->number <= when)
 			continue;
 		print_journal_entry(e);
 	}
