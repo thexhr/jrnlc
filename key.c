@@ -184,12 +184,12 @@ void
 read_password(const char *msg, char *passbuf)
 {
 #if defined(__OpenBSD__) || defined(__FreeBSD__) || defined(__DragonFly__)
-	if (readpassphrase(msg, passbuf, sizeof(passbuf),
+	if (readpassphrase(msg, passbuf, MAX_PASS_LEN-1,
 		RPP_REQUIRE_TTY) == NULL) {
 			log_fatal(1, "Unable to read password\n");
 		}
 #else
-	if (read_passphrase(msg, passbuf, sizeof(passbuf),
+	if (read_passphrase(msg, passbuf, MAX_PASS_LEN-1,
 		RPP_REQUIRE_TTY) == NULL) {
 			log_fatal(1, "Unable to read password\n");
 	}
