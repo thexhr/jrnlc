@@ -78,6 +78,7 @@ Install the dependencies as follows:
 | OpenBSD | `pkg_add libsodium json-c` |
 | Ubuntu Linux| `apt install libsodium-dev libjson-c-dev` |
 | Void Linux| `xbps-install gcc make libsodium-devel json-c-devel` |
+| Windows | There is not native version, just use WSL |
 
 If your operating system does not have `pkg-config` installed by default, you have to install it as well.
 
