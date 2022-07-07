@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Matthias Schmidt <xhr@giessen.ccc.de>
+ * Copyright (c) 2021-22 Matthias Schmidt <xhr@giessen.ccc.de>
  *
  * Permission to use, copy, modify, and distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -28,7 +28,7 @@
 #define MAX_LINE 80
 #define MAX_PASS_LEN 255
 
-#define VERSION "2022.a"
+#define VERSION "2022.b"
 
 struct journal_entry {
 	LIST_ENTRY(journal_entry) entries;
