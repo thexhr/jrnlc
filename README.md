@@ -95,7 +95,7 @@ $ make
 
 ### Important Notes regarding Encryption
 
-By default, jrnlc stores your journal as plain text JSON file in either `$HOME/.jrnlc` or `$XGD_HOME/.jrnlc`.  Using the `-e` option, jrnlc will encrypt your journal.  All needed cryptographic material is stored in `key.json` in the above mentioned directory.  If you loose or modify this file you'll never be able to decrypt your journal again!  If you no longer want your journal to be encrypted, you can decrypt it and save it as plain text with the `-d` option.
+By default, jrnlc stores your journal as plain text JSON file in either `$HOME/.config/jrnlc` or `$XDG_CONFIG_HOME/jrnlc`.  Using the `-e` option, jrnlc will encrypt your journal.  All needed cryptographic material is stored in `key.json` in the above mentioned directory.  If you loose or modify this file you'll never be able to decrypt your journal again!  If you no longer want your journal to be encrypted, you can decrypt it and save it as plain text with the `-d` option.
 
 Using the `-B` option, jrnlc will print an unencrypted JSON copy of your journal to `stderr`. Do this regularly and use other means (GPG, openssl) to protect the backup.
 
