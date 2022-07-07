@@ -232,7 +232,7 @@ setup_base_dir()
 			log_fatal(1, "Path truncation happened.  Buffer to short to fit %s\n", conf.jrnlc_dir);
 		}
 	} else if ((home = getenv("HOME")) != NULL) {
-		ret = snprintf(conf.jrnlc_dir, sizeof(conf.jrnlc_dir), "%s/.jrnlc", home);
+		ret = snprintf(conf.jrnlc_dir, sizeof(conf.jrnlc_dir), "%s/.config/jrnlc", home);
 		if (ret < 0 || (size_t)ret >= sizeof(conf.jrnlc_dir)) {
 			log_fatal(1, "Path truncation happened.  Buffer to short to fit %s\n", conf.jrnlc_dir);
 		}
