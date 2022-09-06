@@ -74,6 +74,7 @@ Install the dependencies as follows:
 | DragonFly BSD | `pkg install libsodium json-c` |
 | Fedora Linux | `dnf install libsodium-devel json-c-devel` |
 | FreeBSD | `pkg install libsodium json-c` |
+| macOS | `brew install libsodium json-c` |
 | NetBSD | `pkgin install pkg-config libsodium json-c` |
 | OpenBSD | `pkg_add libsodium json-c` |
 | Ubuntu Linux| `apt install libsodium-dev libjson-c-dev` |
