@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Matthias Schmidt <xhr@giessen.ccc.de>
+ * Copyright (c) 2021-22 Matthias Schmidt <xhr@giessen.ccc.de>
  *
  * Permission to use, copy, modify, and distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -21,7 +21,8 @@
 #include <unistd.h>
 #include <termios.h>
 
-#if defined(__OpenBSD__) || defined(__FreeBSD__) || defined(__DragonFly__)
+#if defined(__OpenBSD__) || defined(__FreeBSD__) || defined(__DragonFly__) \
+	|| defined(__APPLE__)
 #include <readpassphrase.h>
 #else
 
@@ -183,7 +184,8 @@ get_initial_passphrase(char *passbuf)
 void
 read_password(const char *msg, char *passbuf)
 {
-#if defined(__OpenBSD__) || defined(__FreeBSD__) || defined(__DragonFly__)
+#if defined(__OpenBSD__) || defined(__FreeBSD__) || defined(__DragonFly__) \
+	|| defined(__APPLE__)
 	if (readpassphrase(msg, passbuf, MAX_PASS_LEN-1,
 		RPP_REQUIRE_TTY) == NULL) {
 			log_fatal(1, "Unable to read password\n");
