@@ -24,7 +24,7 @@
 typedef int make_iso_compilers_happy;
 
 #if !defined(__OpenBSD__) && !defined(__FreeBSD__) && !defined(__DragonFly__) \
-	&& defined(__APPLE__)
+	&& !defined(__APPLE__)
 
 #include <ctype.h>
 #include <errno.h>
