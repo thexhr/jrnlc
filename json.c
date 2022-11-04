@@ -90,27 +90,21 @@ void
 create_new_journal_entry()
 {
 	struct journal_entry *e;
-	char *buf = NULL;
+	char buf[MAX_LINE];
 	char *input_buf, *ptr;
-	size_t linecap = 0;
-	ssize_t linelen, totallen = 0;
 	int i = 1, input_len = 0;
 
 	printf("[One title line, one blank line, then the body. End with ^D on a blank line]\n");
 	input_buf = NULL;
-	while ((linelen = getline(&buf, &linecap, stdin)) > 0) {
+
+	while(fgets(buf, sizeof(buf), stdin)) {
 		input_buf = recallocarray(input_buf, i-1, i, MAX_LINE + 1);
 		if (input_buf == NULL) {
 			log_fatal(1, "memory allocation failed\n");
 		}
 		input_buf = strcat(input_buf, buf);
 		i++;
-		totallen += linelen;
 	}
-	free(buf);
-	buf = NULL;
-	if (ferror(stdin))
-		log_fatal(1, "getline return an error.  Abort.");
 
 	if (input_buf == NULL) {
 		printf("Empty entry, abort\n");
@@ -118,11 +112,6 @@ create_new_journal_entry()
 		input_buf = NULL;
 		return;
 	}
-
-	if (totallen - 1 < 0) {
-		log_fatal(1, "Line len < 0. Something's wrong");
-	}
-	input_buf[totallen - 1] = '\0';
 
 	/* fgets() ensures that input_buf is NUL terminated */
 	input_len = strlen(input_buf);
