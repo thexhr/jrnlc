@@ -1,7 +1,5 @@
 # jrnlc - Command line based Journal
 
-[![Language grade: C](https://img.shields.io/lgtm/grade/cpp/g/thexhr/jrnlc.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/thexhr/jrnlc/context:cpp)
-
 jrnlc is a opinionated command line application to take notes likes a journal similar to [jrnl](https://jrnl.sh).  You can take notes by entering them on the command line or providing them from a file to jrnlc's standard input.  It supports full encryption of the journal, so that your notes remain secret.
 
 ## Usage
