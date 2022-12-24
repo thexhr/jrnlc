@@ -134,7 +134,9 @@ write_pass_file(unsigned char *key, const char *pass)
 		log_fatal(1, "Encryption of key failed\n");
 	}
 
-	json_object_object_add(root, "key", json_object_new_string(c));
+	if (json_object_object_add(root, "key", json_object_new_string(c)) < 0) {
+		log_fatal(1, "Cannot add object to JSON\n");
+	}
 	free(c);
 	c = NULL;
 
@@ -145,7 +147,11 @@ write_pass_file(unsigned char *key, const char *pass)
 		== NULL) {
 		log_fatal(1, "Conversion of nonce to HEX failed\n");
 	}
-	json_object_object_add(root, "nonce", json_object_new_string(hex));
+
+	if (json_object_object_add(root, "nonce", json_object_new_string(hex))
+		< 0) {
+		log_fatal(1, "Cannot add object to JSON\n");
+	}
 	free(hex);
 	hex = NULL;
 
