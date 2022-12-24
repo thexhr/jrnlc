@@ -199,6 +199,10 @@ main(int argc, char **argv)
 		create_new_journal_entry();
 	}
 
+	/* Free passbuf in case of an unencrypted journal */
+	free(passbuf);
+	passbuf = NULL;
+
 	shutdown(0);
 
 	return 0;
