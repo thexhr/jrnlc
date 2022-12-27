@@ -6,9 +6,9 @@ CFLAGS  = -O2
 CFLAGS += -pipe -fdiagnostics-color -Wno-unknown-warning-option -Wpedantic
 CFLAGS += -Wall -Werror-implicit-function-declaration -Wno-format-truncation
 CFLAGS += -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations
-CFLAGS += -Wshadow -Wpointer-arith -Wcast-qual -Wsign-compare -Wswitch-enum
-CFLAGS += -Wunused-parameter -Wuninitialized -Wformat-security -Wformat-overflow=2
-CFLAGS += -Wno-padded
+CFLAGS += -Wshadow -Wpointer-arith -Wcast-qual -Wswitch-enum
+CFLAGS += -Wformat-security -Wformat-overflow=2
+CFLAGS += -Wno-padded -Wextra
 CFLAGS += `pkg-config --cflags libsodium json-c`
 LDADD   = `pkg-config --libs libsodium json-c`
 
