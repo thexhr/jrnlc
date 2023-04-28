@@ -87,7 +87,7 @@ delete_entry(int id)
 }
 
 void
-create_new_journal_entry()
+create_new_journal_entry(void)
 {
 	struct journal_entry *e;
 	char buf[MAX_LINE];
@@ -168,7 +168,7 @@ create_new_journal_entry()
 }
 
 void
-load_journal_from_disk()
+load_journal_from_disk(void)
 {
 	struct config *conf = get_config();
 	struct journal_entry *e, *temp_e = NULL;

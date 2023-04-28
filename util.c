@@ -113,13 +113,13 @@ calloc_wrapper(size_t nmemb, size_t size)
 
 #ifdef __OpenBSD__
 void
-sandbox()
+sandbox(void)
 {
 	if (pledge("stdio rpath wpath cpath tty", NULL) == -1)
 		log_fatal(1, "pledge");
 }
 #else
-void sandbox()
+void sandbox(void)
 {
 }
 #endif /* __OpenBSD__ */

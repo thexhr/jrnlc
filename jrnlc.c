@@ -224,7 +224,7 @@ shutdown(int prio)
 }
 
 void
-setup_base_dir()
+setup_base_dir(void)
 {
 	struct stat sb;
 	char *home, *xdg_home;
@@ -274,31 +274,31 @@ setup_base_dir()
 }
 
 const unsigned char *
-get_nonce()
+get_nonce(void)
 {
 	return nonce;
 }
 
 const char*
-get_jrnlc_journal()
+get_jrnlc_journal(void)
 {
 	return conf.jrnlc_journal;
 }
 
 int
-is_encrypted()
+is_encrypted(void)
 {
 	return conf.encrypted;
 }
 
 struct config *
-get_config()
+get_config(void)
 {
 	return &conf;
 }
 
 const char*
-get_config_path()
+get_config_path(void)
 {
 	return jrnlc_config;
 }
