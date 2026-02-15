@@ -15,8 +15,6 @@
  */
 
 
-#include <stdio.h>
-
 #include <json-c/json.h>
 
 #include "jrnlc.h"
