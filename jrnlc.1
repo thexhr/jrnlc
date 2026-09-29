@@ -1,5 +1,5 @@
 .\"
-.\" Copyright (c) 2021-22 Matthias Schmidt
+.\" Copyright (c) 2021-22,2026 Matthias Schmidt
 .\"
 .\" Permission to use, copy, modify, and distribute this software for any
 .\" purpose with or without fee is hereby granted, provided that the above
@@ -14,7 +14,7 @@
 .\" OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 .\"
 .\"
-.Dd July 7, 2022
+.Dd September 29, 2026
 .Dt JRNLC 1
 .Sh NAME
 .Nm jrnlc
@@ -39,7 +39,7 @@ The options are as follows:
 .It Fl a
 Show all journal entries.
 .It Fl B
-Print an unecrypted backup of the journal to stderr.
+Print an unencrypted backup of the journal to stderr.
 You can combine this option with other ones.
 .It Fl d
 Decrypt an encrypted journal.
@@ -47,7 +47,7 @@ Decrypt an encrypted journal.
 Delete the journal entry with the given
 .Ar number .
 .It Fl e
-Encrypt an unecrypted journal.
+Encrypt an unencrypted journal.
 .It Fl I Ar number
 Show only the entry with the given
 .Ar number .
@@ -59,10 +59,10 @@ entries.
 Show the version number.
 .El
 .Pp
-If not arguments are provided
+If no arguments are provided
 .Nm
 provides the user with an input prompt to enter a journal entry.
-See the examples section below on how to use
+See the examples section below for how to use
 .Nm .
 .Sh ENVIRONMENT
 .Nm
@@ -85,7 +85,7 @@ subdirectory under the path set by this environment variable.
 .El
 .Sh EXIT STATUS
 .Nm
-normally exists with 0 or with 1 if an error occurred.
+normally exits with 0 or with 1 if an error occurred.
 .Sh EXAMPLES
 The following examples show how to use
 .Nm .
